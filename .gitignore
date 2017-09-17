@@ -1,3 +1,9 @@
+# build output and ide specific
+bin/
+target/
+.classpath
+.project
+
 # Compiled class file
 *.class
 
