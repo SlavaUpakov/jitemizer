@@ -7,18 +7,29 @@
     <groupId>com.jitemizer</groupId>
     <artifactId>jitemizer</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
     <name>jitemizer</name>
     <description>jitemizer is a business data driven application framework</description>
 
+    <!-- 
     <properties>
+        <java.version>1.8</java.version>
         <docker.image.prefix>jitemizer</docker.image.prefix>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-        <java.version>1.8</java.version>
-    </properties>
+    </properties> 
+    -->
 
+    <modules>
+        <module>core</module>
+        <module>data</module>
+        <module>service</module>
+        <module>host</module>
+        <module>frontend</module>
+    </modules>
+
+    <!-- 
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -40,7 +51,7 @@
             <artifactId>json-path</artifactId>
             <scope>test</scope>
         </dependency>
-    </dependencies>
+    </dependencies> -->
 
     <build>
         <finalName>${project.artifactId}</finalName>
@@ -56,7 +67,7 @@
                 <version>0.4.14</version>
                 <configuration>
                     <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
-                    <dockerDirectory>src/main/docker</dockerDirectory>
+                    <dockerDirectory>deployment</dockerDirectory>
                     <resources>
                         <resource>
                             <targetPath>/</targetPath>

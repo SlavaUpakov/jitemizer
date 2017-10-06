@@ -4,6 +4,12 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "taskName": "install",
+            "type": "shell",
+            "command": ".\\mvnw install",
+            "group": "build"
+        },
+        {
             "taskName": "verify",
             "type": "shell",
             "command": "mvn -B verify",
@@ -14,6 +20,12 @@
             "type": "shell",
             "command": "mvn -B test",
             "group": "test"
+        },        
+        {
+            "taskName": "boot:run",
+            "type": "shell",
+            "command": "mvn spring-boot:run -Dserver.port=9000",
+            "group": "none"
         },
         {
             "taskName": "docker:package",
