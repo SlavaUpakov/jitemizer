@@ -1,4 +1,4 @@
-package com.jitemizer.data.entity;
+package com.jitemizer.data.jpa.entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -13,4 +13,7 @@ public class JItemEntity {
     @Id 
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+
+    protected JItemEntity() {        
+    }
 }

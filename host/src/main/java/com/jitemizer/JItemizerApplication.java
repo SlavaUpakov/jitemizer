@@ -1,9 +1,3 @@
-/*
- * jItemizer
- *
- * Copyright (c) 2017 - Slava Upakov
- */
-
 package com.jitemizer;
 
 import org.springframework.beans.factory.annotation.Value;
@@ -13,10 +7,6 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import javax.annotation.PostConstruct;
 
-/**
- * Application Starter
- *
- */
 @SpringBootApplication
 @EnableAutoConfiguration
 public class JItemizerApplication {
@@ -31,16 +21,16 @@ public class JItemizerApplication {
         SpringApplication.run(JItemizerApplication.class, args);
     }
 
-    @Bean
-    public WebMvcConfigurer corsConfigurer() {
-        return new WebMvcConfigurerAdapter() {
-            @Override
-            public void addCorsMappings(CorsRegistry registry) {
-                registry.addMapping("/api")
-                    .allowedOrigins("http://localhost:9000");
-            }
-        };
-    }
+    // @Bean
+    // public WebMvcConfigurer corsConfigurer() {
+    //     return new WebMvcConfigurerAdapter() {
+    //         @Override
+    //         public void addCorsMappings(CorsRegistry registry) {
+    //             registry.addMapping("/api")
+    //                 .allowedOrigins("http://localhost:9000");
+    //         }
+    //     };
+    // }
 
     /**
      * prints the message read from configs to console, can be used

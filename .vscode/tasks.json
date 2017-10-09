@@ -10,6 +10,12 @@
             "group": "build"
         },
         {
+            "taskName": "mvn:clean",
+            "type": "shell",
+            "command": "mvn clean package",
+            "group": "build"
+        },
+        {
             "taskName": "verify",
             "type": "shell",
             "command": "mvn -B verify",

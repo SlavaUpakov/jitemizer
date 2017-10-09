@@ -1,20 +1,13 @@
 package com.jitemizer.domains;
 
-import java.util.concurrent.atomic.AtomicLong;
+import lombok.Data;
 
-/**
- * Main building block
- *
- */
-public class JItemCell {
-    private final AtomicLong counter = new AtomicLong();
-    
-    private final long id;
-    private final String name;
-    private final String value;
+public @Data class JItemCell {
+    private long id;
+    private String name;
+    private String value;
 
     protected JItemCell() {
-        // long id = counter.incrementAndGet();
         this(0L, "", "");
     }
 
@@ -24,15 +17,15 @@ public class JItemCell {
         this.value = value;
     }
 
-    public long getId() {
-        return this.id;
-    }
+    // public long getId() {
+    //     return this.id;
+    // }
 
-    public String getName() {
-        return this.name;
-    }
+    // public String getName() {
+    //     return this.name;
+    // }
 
-    public String getValue() {
-        return this.value;
-    }
+    // public String getValue() {
+    //     return this.value;
+    // }
 }

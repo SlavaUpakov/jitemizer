@@ -1,8 +1,8 @@
-package com.jitemizer.data.repository;
+package com.jitemizer.data.jpa;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.jitemizer.data.entity.JItemEntity;
+import com.jitemizer.data.jpa.entity.JItemEntity;
 
 // This will be AUTO IMPLEMENTED by Spring into a Bean called userRepository
 // CRUD refers Create, Read, Update, Delete

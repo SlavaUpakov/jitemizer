@@ -29,10 +29,7 @@ import javax.validation.Valid;
 public class JItemEndpoint {
 
     @Autowired
-    private JItemService jItemService;
-
-    @Autowired 
-    private JItemEntityRepository repository; 
+    private JItemService service;
 
     /**
      * gets an JItem instance
@@ -42,8 +39,8 @@ public class JItemEndpoint {
      */
     @RequestMapping(path = "/{name}", method = RequestMethod.GET)
     // public ResponseEntity<JItem> getItem(@PathVariable String name) {
-    public @ResponseBody JItem getItem(@PathVariable String name) {
-        final JItem item = jItemService.getJItem(name);
+    public @ResponseBody String getItem(@PathVariable String name) {
+        final String item = service.getMessage();
         // return new ResponseEntity<JItemResponse>(item, HttpStatus.OK);
         return item;
     }
@@ -61,9 +58,8 @@ public class JItemEndpoint {
         return "added";
 	}
 
-	@GetMapping(path="/all")
-	public @ResponseBody Iterable<JItem> getAll() {
-		// This returns a JSON or XML with ll items
-		return repository.findAll();
-	}
+	// @GetMapping(path="/all")
+	// public @ResponseBody Iterable<JItem> getAll() {
+	// 	return service.findAll();
+	// }
 }

@@ -1,8 +1,7 @@
-package com.jitemizer.data.repository;
+package com.jitemizer.data.mongo;
 
 import com.jitemizer.domains.JItem;
 
-import java.util.List;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 public interface JItemMongoRepository extends MongoRepository<JItem, String> {
