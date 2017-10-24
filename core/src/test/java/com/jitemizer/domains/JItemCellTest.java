@@ -1,9 +1,22 @@
 package com.jitemizer.domains;
 
+import lombok.val;
 import org.junit.Test;
 import static org.assertj.core.api.Assertions.assertThat;
 
 public class JItemCellTest {
+
+    @Test
+    public void should_build_cell() {
+        val cell = JItemCell.builder()
+                .id(123)
+                .name("name")
+                .value("value")
+                .build();
+        assertThat(cell.getId()).isEqualTo(123);
+        assertThat(cell.getName()).isEqualTo("name");
+        assertThat(cell.getValue()).isEqualTo("value");
+    }
 
     @Test
     public void succeeds_to_construct_with_id() {

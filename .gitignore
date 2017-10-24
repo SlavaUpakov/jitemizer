@@ -4,6 +4,9 @@ target/
 .settings/
 .classpath
 .project
+.idea/
+*.iml
+Servers/
 
 # Compiled class file
 *.class

@@ -6,7 +6,7 @@
         {
             "taskName": "install",
             "type": "shell",
-            "command": ".\\mvnw install",
+            "command": ".\\mvnw install -o -T 1C",
             "group": "build"
         },
         {

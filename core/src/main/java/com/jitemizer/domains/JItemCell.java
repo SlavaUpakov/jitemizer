@@ -1,31 +1,14 @@
 package com.jitemizer.domains;
 
-import lombok.Data;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Value;
 
-public @Data class JItemCell {
-    private long id;
-    private String name;
-    private String value;
-
-    protected JItemCell() {
-        this(0L, "", "");
-    }
-
-    public JItemCell(final long id, final String name, final String value) {
-        this.id = id;
-        this.name = name;
-        this.value = value;
-    }
-
-    // public long getId() {
-    //     return this.id;
-    // }
-
-    // public String getName() {
-    //     return this.name;
-    // }
-
-    // public String getValue() {
-    //     return this.value;
-    // }
+@Value
+@AllArgsConstructor
+@Builder
+public class JItemCell {
+    private final long id;
+    private final String name;
+    private final String value;
 }

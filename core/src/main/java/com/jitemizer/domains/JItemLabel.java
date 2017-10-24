@@ -1,24 +1,23 @@
-/*
- * jItemizer
- *
- * Copyright (c) 2017 - Slava Upakov
- */
-
 package com.jitemizer.domains;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Value;
 
 /**
  * JItemLabel defines and implements a labeling solution applying
  * - color
  * - name
- * - icon ?
- *
+ * - icon
+ * - ?
+ * - TODO: could we define those properties through cells ?
  */
-public class JItemLabel extends JItem {
-    public JItemLabel(final String name) {
-        this.name = name;
-    }
-
-    public String getName() {
-        return this.name;
-    }
+@Value
+@AllArgsConstructor
+@Builder
+public class JItemLabel {
+    private final long id;
+    private final String name;
+    private final String color;
+    private final String icon;
 }

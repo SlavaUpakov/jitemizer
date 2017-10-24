@@ -1,54 +1,23 @@
 package com.jitemizer.domains;
 
-import java.util.ArrayList;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Singular;
+import lombok.Value;
+
 import java.util.List;
 
 /**
- * Main building block
+ * Main framework building block
  *
  */
-public class JItem extends JItemCell {
-    protected String name;
-
-    protected List<JItemCell> cells = new ArrayList<>(); 
-
-    protected List<JItemLabel> labels = new ArrayList<>(); 
-
-    protected JItem() {
-        super();
-    }
-
-    protected JItem(Builder builder) {
-        
-    }
-
-    public JItem(final long id, final String name) {
-        this(id, name, new ArrayList<JItemCell>());
-    }
-
-    public JItem(final long id, final String name, final List<? extends JItemCell> cells) {
-        super(id, name, "");
-        this.cells.addAll(cells);
-    }
-
-    public String getName() {
-        return this.name;
-    }
-
-    public List<JItemCell> getCells() {
-        return this.cells;
-    }
-
-    /**
-     * 
-     */
-    public static class Builder {
-        public Builder add(JItemCell cell) {
-            return this;
-        }
-
-        public JItem build() {
-            return new JItem(this);
-        }
-    }
+@Value
+@AllArgsConstructor
+@Builder
+public class JItem {
+    private final long id;
+    private final String name;
+    @Singular
+    private List<JItemCell> cells;
+    @Singular private List<JItemLabel> labels;
 }

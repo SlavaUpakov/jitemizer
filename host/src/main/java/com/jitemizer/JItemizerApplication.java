@@ -32,13 +32,8 @@ public class JItemizerApplication {
     //     };
     // }
 
-    /**
-     * prints the message read from configs to console, can be used
-     * to check whether config was read from ConfigServer or from
-     * default configuration
-     */
     @PostConstruct
     private void postConstruct() {
-        System.out.println(message);
+        System.out.format("STARTING: %s", message);
     }
 }
