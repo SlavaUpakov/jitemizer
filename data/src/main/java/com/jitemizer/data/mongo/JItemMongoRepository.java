@@ -1,6 +1,6 @@
 package com.jitemizer.data.mongo;
 
-import com.jitemizer.domains.JItem;
+import com.jitemizer.core.domain.JItem;
 
 import org.springframework.data.mongodb.repository.MongoRepository;
 

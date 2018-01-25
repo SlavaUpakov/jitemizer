@@ -1,47 +1,125 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-	<modelVersion>4.0.0</modelVersion>
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.jitemizer</groupId>
-	<artifactId>host</artifactId>
-	<version>0.0.1-SNAPSHOT</version>
-	<packaging>jar</packaging>
+    <groupId>com.jitemizer</groupId>
+    <artifactId>host</artifactId>
+    <version>0.0.1-SNAPSHOT</version>
+    <packaging>jar</packaging>
 
-	<parent>
-		<groupId>org.springframework.boot</groupId>
-		<artifactId>spring-boot-starter-parent</artifactId>
-		<version>1.5.7.RELEASE</version>
-		<relativePath/> <!-- lookup parent from repository -->
-	</parent>
+    <parent>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-parent</artifactId>
+        <version>1.5.7.RELEASE</version>
+        <relativePath/> <!-- lookup parent from repository -->
+    </parent>
 
-	<properties>
-		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.version>1.8</java.version>
-	</properties>
+    <properties>
+        <docker.image.prefix>host</docker.image.prefix>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <java.version>1.8</java.version>
+    </properties>
 
-	<dependencies>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
+    <build>
+        <plugins>
+            <plugin>
+                <!-- more details: https://github.com/spotify/docker-maven-plugin -->
+                <groupId>com.spotify</groupId>
+                <artifactId>docker-maven-plugin</artifactId>
+                <!-- <version>1.3.4</version> -->
+                <version>0.4.14</version>
+                <configuration>
+                    <imageName>${docker.image.prefix}/${project.artifactId}</imageName>
+                    <dockerDirectory>deployment</dockerDirectory>
+                    <resources>
+                        <resource>
+                            <targetPath>/</targetPath>
+                            <directory>${project.build.directory}</directory>
+                            <include>${project.build.finalName}.jar</include>
+                        </resource>
+                    </resources>
+                </configuration>
+                <executions>
+                    <!-- you can make dockerfile:push automatically run in the install or deploy lifecycle phases by adding it to the plugin configuration. -->
+                    <execution>
+                        <id>default</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>build</goal>
+                            <goal>push</goal>
+                        </goals>
+                    </execution>
+                    <!-- todo: tag image on package
+                    <execution>
+                        <id>tag-image</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>tag</goal>
+                        </goals>
+                        <configuration>
+                            <image>${docker.image.prefix}:${project.version}</image>
+                            <newName>registry.example.com/${docker.image.prefix}:${project.version}</newName>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>push-image</id>
+                        <phase>deploy</phase>
+                        <goals>
+                            <goal>push</goal>
+                        </goals>
+                        <configuration>
+                            <imageName>registry.example.com/${docker.image.prefix}:${project.version}</imageName>
+                        </configuration>
+                    </execution>
+                    -->
+                </executions>
+
+            </plugin>
+        </plugins>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-test</artifactId>
-			<scope>test</scope>
-		</dependency>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework.security</groupId>
+            <artifactId>spring-security-jwt</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger2</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>io.springfox</groupId>
+            <artifactId>springfox-swagger-ui</artifactId>
+            <version>2.4.0</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
 
         <dependency>
             <groupId>com.jitemizer</groupId>
             <artifactId>core</artifactId>
             <version>${project.version}</version>
         </dependency>		
-        <dependency>
-            <groupId>com.jitemizer</groupId>
-            <artifactId>service</artifactId>
-            <version>${project.version}</version>
-        </dependency>		
-		
-	</dependencies>
+
+    </dependencies>
 
 </project>

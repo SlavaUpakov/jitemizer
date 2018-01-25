@@ -5,4 +5,5 @@ spring:
   cloud:
     config:
       uri: http://localhost:8888/ # URI to ConfigServer
+
 message: Could not load configuration from ConfigServer # message that is loaded if connection to ConfigServer failed

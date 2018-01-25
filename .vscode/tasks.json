@@ -4,6 +4,12 @@
     "version": "2.0.0",
     "tasks": [
         {
+            "taskName": "run:host",
+            "type": "shell",
+            "command": "(.\\mvnw install -o -T 1C) -and (.\\mvnw spring-boot:run -pl host)",
+            "group": "build"
+        },
+        {
             "taskName": "install",
             "type": "shell",
             "command": ".\\mvnw install -o -T 1C",

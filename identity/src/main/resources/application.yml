@@ -1,0 +1,18 @@
+    
+server:
+    port: 9999
+    contextPath: /uaa
+    
+#security:
+#    user.password: password
+security.basic.enabled: false
+    
+logging:
+  level:
+    org.springframework.security: DEBUG
+    org.springframework.web: DEBUG
+    
+    
+# enabling h2 webcosole. 
+# http://localhost:9999/uaa/h2-console
+spring.h2.console.enabled: true
