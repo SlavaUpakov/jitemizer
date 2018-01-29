@@ -38,8 +38,8 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @RunWith(SpringJUnit4ClassRunner.class)
 @SpringBootTest
 @WebAppConfiguration
-public class JItemEndpointTest
-{
+public class JItemEndpointTest {
+
     private final ObjectMapper mapper = new ObjectMapper();
     private final MediaType MEDIA_TYPE = MediaType.APPLICATION_JSON_UTF8;
     private final String requestBody = "{\"name\":\"cell\"}";
@@ -54,8 +54,7 @@ public class JItemEndpointTest
     }
 
     @Test
-    public void shouldReturnAllCurrentAvailableItems() throws Exception
-    {
+    public void shouldReturnAllCurrentAvailableItems() throws Exception {
         final MockHttpServletRequestBuilder request = get("/api/items")
             .contentType(MEDIA_TYPE)
             .content("");
@@ -68,7 +67,9 @@ public class JItemEndpointTest
         final List<JItem> items = Arrays.asList(data);
 
         assertThat(items).isNotNull();
+
         // todo: add real test here
         assertThat(items.size()).isEqualTo(0);
     }
+
 }
